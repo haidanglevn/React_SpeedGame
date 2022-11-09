@@ -1,0 +1,8 @@
+.App {
+  text-align: center;
+}
+
+.circles {
+  padding: 20px;
+  display: flex;
+}
