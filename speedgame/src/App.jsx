@@ -1,12 +1,32 @@
 import "./App.css";
 import React, { Component } from "react";
 import Circle from "./Circle";
+import GameOver from "./GameOver";
 
 class App extends Component {
   state = {
-    circleNo: 4,
+    circle: [
+      {
+        id: 1,
+        color: "red",
+      },
+      {
+        id: 2,
+        color: "blue",
+      },
+      {
+        id: 3,
+        color: "yellow",
+      },
+      {
+        id: 4,
+        color: "green",
+      },
+    ],
     score: 0,
     current: 0,
+    styleDefault: "circle",
+    styleActive: "circle active",
   };
 
   clickHandler = (event) => {
@@ -47,28 +67,41 @@ class App extends Component {
   };
 
   render() {
-    let arr = Array.from({ length: this.state.circleNo }, () => ({ id: "" }));
-    arr[0].id = 1;
-    arr[1].id = 2;
-    arr[2].id = 3;
-    arr[3].id = 4;
+    let circleArr = this.state.circle;
 
-    
     return (
       <div className="App">
         <h1>SPEED GAME</h1>
         <h2>Your score is : {this.state.score}</h2>
+
+        <div className="circles">
+          {circleArr.map((circle) => {
+            if (circle.id == this.state.current) {
+              return (
+                <Circle
+                  key={circle.id}
+                  clickHandler={this.clickHandler}
+                  id={circle.id}
+                  color={circle.color}
+                  style={this.state.styleActive}
+                />
+              );
+            } else {
+              return (
+                <Circle
+                  key={circle.id}
+                  clickHandler={this.clickHandler}
+                  id={circle.id}
+                  color={circle.color}
+                  style={this.state.styleDefault}
+                />
+              );
+            }
+          })}
+        </div>
         <button onClick={this.startHandler}>Start game</button>
         <button onClick={this.stopHandler}>Stop game</button>
-        <div className="circles">
-          {arr.map((circle) => (
-            <Circle
-              key={circle.id}
-              clickHandler={this.clickHandler}
-              id={circle.id}
-            />
-          ))}
-        </div>
+        <GameOver score={this.state.score}/>
       </div>
     );
   }

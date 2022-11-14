@@ -1,8 +1,27 @@
+@import url("https://fonts.googleapis.com/css?family=Mountains+of+Christmas");
+
 .App {
   text-align: center;
+  color: orangered;
+  font-size: 2em;
 }
 
 .circles {
+  justify-content: center;
   padding: 20px;
   display: flex;
+}
+
+button {
+  font-family: "Mountains of Christmas";
+  font-size: 1em;
+  border-radius: 20px;
+  margin: 0 20px;
+  cursor: pointer;
+} 
+
+.active {
+  background-image: url("./assets/ornament.png");
+  background-position: center;
+  background-size: contain;
 }

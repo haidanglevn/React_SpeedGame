@@ -1,11 +1,16 @@
 import React from 'react';
 import "./Circle.css"
 const Circle = (props) => {
-    let id = props.id;
+    let propsColor = props.color;
     return (
-        <div className='circle' id={props.id} onClick={props.clickHandler}>
-            id: {props.id}
-        </div>
+      <div
+        style={{ backgroundColor: propsColor }}
+        className={props.style}
+        id={props.id}
+        onClick={props.clickHandler}
+      >
+        id: {props.id}
+      </div>
     );
 };
 
