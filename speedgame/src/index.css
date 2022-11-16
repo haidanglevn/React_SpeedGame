@@ -1,9 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Mountains+of+Christmas");
+* {
+  margin: 0;
+}
 
 body {
-  background-image: url(./assets/background.png);
-  background-position: center;
+position: fixed;
+  background-image: url(./assets/background.jpeg);
+  background-position: top;
   background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
   margin: 0;
   font-family: "Mountains of Christmas";
   -webkit-font-smoothing: antialiased;
@@ -14,3 +21,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+

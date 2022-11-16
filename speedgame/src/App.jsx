@@ -3,6 +3,18 @@ import React, { Component } from "react";
 import Circle from "./Circle";
 import GameOver from "./GameOver";
 
+import click from "./assets/sounds/click2.wav";
+import background from "./assets/sounds/christmas background.mp3";
+import gameend from "./assets/sounds/gameend.wav";
+import clickright from "./assets/sounds/clickright.wav";
+import clickwrong from "./assets/sounds/minuslife.wav";
+
+let clickSound = new Audio(click);
+let backgroundMusic = new Audio(background);
+let gameEndSound = new Audio(gameend);
+let clickRightSound = new Audio(clickright);
+let clickWrongSound = new Audio(clickwrong);
+
 class App extends Component {
   state = {
     circle: [
@@ -24,55 +36,153 @@ class App extends Component {
       },
     ],
     score: 0,
-    current: 0,
+    current: undefined,
+    health: 5,
+    pace: 1000,
     styleDefault: "circle",
     styleActive: "circle active",
+    gameStart: false,
+    gameEnd: false,
+    showGameOver: false,
+    buttonDisable: "disabled",
+    musicPlay: false,
+  };
+
+  timer;
+
+  clickPlay = () => {
+    if (clickSound.paused) {
+      clickSound.play();
+    } else {
+      clickSound.currentTime = 0;
+    }
+  };
+  clickRightPlay = () => {
+    if (clickRightSound.paused) {
+      clickRightSound.play();
+    } else {
+      clickRightSound.currentTime = 0;
+    }
+  };
+  clickWrongPlay = () => {
+    if (clickWrongSound.paused) {
+      clickWrongSound.play();
+    } else {
+      clickWrongSound.currentTime = 0;
+    }
+  };
+
+  backgroundMusicPlay = () => {
+    if (this.state.musicPlay === false) {
+      backgroundMusic.play();
+      backgroundMusic.loop = true;
+      this.setState({
+        musicPlay: true,
+      });
+    } else if (this.state.musicPlay === true) {
+      backgroundMusic.pause();
+      this.setState({
+        musicPlay: false,
+      });
+    }
   };
 
   clickHandler = (event) => {
-    console.log(`circle ${event.target.id} is clicked`);
-    this.setState({
-      score: this.state.score + 1,
-    });
+    this.clickPlay();
+
+    if (event.target.id == this.state.current) {
+      this.clickRightPlay();
+      this.setState({
+        score: this.state.score + 1,
+      });
+    } else {
+      this.clickWrongPlay();
+
+      this.setState({
+        health: this.state.health - 1,
+      });
+      if (this.state.health <= 0) {
+        this.setState({
+          endGame: true,
+        });
+        this.endHandler();
+        return;
+      }
+    }
   };
   randomNo = () => {
     let current = this.state.current;
-    console.log("At the start, current is ", current);
     let nextActive = Math.floor(Math.random() * 4 + 1);
-    console.log("Machine generates an random number: ", nextActive);
-
     if (nextActive == current) {
       nextActive = Math.floor(Math.random() * 4 + 1);
-      console.log(
-        "If these are the same, then it generates once more to: ",
-        nextActive
-      );
       this.setState({
         current: nextActive,
       });
     } else {
       this.setState({
         current: nextActive,
+        pace: this.state.pace * 0.98,
       });
     }
-    console.log("The nextActive for next round: ", nextActive);
-    console.log("---------------------------");
+    this.timer = setTimeout(this.randomNo, this.state.pace);
   };
 
   startHandler = () => {
-    window.setInterval(this.randomNo, 2000);
+    this.randomNo();
   };
-  stopHandler = () => {
-    window.clearInterval(this.startHandler);
+
+  endHandler = () => {
+    gameEndSound.play();
+    clearTimeout(this.timer);
+    this.setState({
+      showGameOver: true,
+    });
+  };
+
+  resetHandler = () => {
+    this.setState({
+      score: 0,
+      current: undefined,
+      health: 5,
+      pace: 1000,
+      gameStart: false,
+      gameEnd: false,
+      showGameOver: false,
+    });
   };
 
   render() {
     let circleArr = this.state.circle;
-
+    const modal = () => {
+      if (this.state.showGameOver === true) {
+        return (
+          <GameOver score={this.state.score} resetHandler={this.resetHandler} />
+        );
+      }
+    };
+    const musicControl = () => {
+      if (this.state.musicPlay === false) {
+        return (
+          <div
+            className="musicPlayer play"
+            onClick={this.backgroundMusicPlay}
+          ></div>
+        );
+      } else {
+        return (
+          <div
+            className="musicPlayer pause"
+            onClick={this.backgroundMusicPlay}
+          ></div>
+        );
+      }
+    };
     return (
       <div className="App">
         <h1>SPEED GAME</h1>
+        <h1>Press Start and Unwrap the present !</h1>
         <h2>Your score is : {this.state.score}</h2>
+        <h2 id="health">❤ {this.state.health}</h2>
 
         <div className="circles">
           {circleArr.map((circle) => {
@@ -99,9 +209,10 @@ class App extends Component {
             }
           })}
         </div>
-        <button onClick={this.startHandler}>Start game</button>
-        <button onClick={this.stopHandler}>Stop game</button>
-        <GameOver score={this.state.score}/>
+        <button onClick={this.startHandler}>Start</button>
+        <button onClick={this.endHandler}>End</button>
+        {musicControl()}
+        {modal()}
       </div>
     );
   }

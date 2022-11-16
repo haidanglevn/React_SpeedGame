@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Mountains+of+Christmas");
 
 .App {
+  
   text-align: center;
   color: orangered;
   font-size: 2em;
@@ -8,20 +9,60 @@
 
 .circles {
   justify-content: center;
-  padding: 20px;
+  padding: 50px 20px;
   display: flex;
 }
-
+h1,
+h2,
+div,
+button {
+  padding: 10px;
+}
 button {
   font-family: "Mountains of Christmas";
-  font-size: 1em;
+  font-size: 1.5em;
+  background-color: orangered;
   border-radius: 20px;
   margin: 0 20px;
   cursor: pointer;
-} 
+}
+
+button:hover {
+  transform: scale(0.9, 0.9);
+  background-color: olivedrab;
+}
 
 .active {
-  background-image: url("./assets/ornament.png");
+  background-image: url("./assets/gift-box.png");
   background-position: center;
   background-size: contain;
+}
+.active:active {
+  background-image: url("./assets/gift-box-open.png");
+}
+#health {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.musicPlayer {
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  background-size: cover;
+}
+.musicPlayer:hover {
+  transform: scale(0.9, 0.9);
+  cursor: pointer;
+}
+
+.play {
+  background-image: url("./assets/play.png");
+}
+.pause {
+  background-image: url("./assets/pause.png");
 }

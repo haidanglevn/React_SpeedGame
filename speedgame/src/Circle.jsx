@@ -9,7 +9,6 @@ const Circle = (props) => {
         id={props.id}
         onClick={props.clickHandler}
       >
-        id: {props.id}
       </div>
     );
 };
