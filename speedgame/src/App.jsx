@@ -42,7 +42,6 @@ class App extends Component {
     styleDefault: "circle",
     styleActive: "circle active",
     gameStart: false,
-    gameEnd: false,
     showGameOver: false,
     buttonDisable: "disabled",
     musicPlay: false,
@@ -89,24 +88,25 @@ class App extends Component {
 
   clickHandler = (event) => {
     this.clickPlay();
-
-    if (event.target.id == this.state.current) {
-      this.clickRightPlay();
-      this.setState({
-        score: this.state.score + 1,
-      });
-    } else {
-      this.clickWrongPlay();
-
-      this.setState({
-        health: this.state.health - 1,
-      });
-      if (this.state.health <= 0) {
+    if (this.state.gameStart === true) {
+      if (event.target.id == this.state.current) {
+        this.clickRightPlay();
         this.setState({
-          endGame: true,
+          score: this.state.score + 1,
         });
-        this.endHandler();
-        return;
+      } else {
+        this.clickWrongPlay();
+
+        this.setState({
+          health: this.state.health - 1,
+        });
+        if (this.state.health <= 1) {
+          this.setState({
+            endGame: true,
+          });
+          this.endHandler();
+          return;
+        }
       }
     }
   };
@@ -129,6 +129,9 @@ class App extends Component {
 
   startHandler = () => {
     this.randomNo();
+    this.setState({
+      gameStart: true,
+    });
   };
 
   endHandler = () => {
@@ -180,7 +183,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SPEED GAME</h1>
-        <h1>Press Start and Unwrap the present !</h1>
+        <h2>Press Start and Unwrap the present !</h2>
         <h2>Your score is : {this.state.score}</h2>
         <h2 id="health">❤ {this.state.health}</h2>
 
