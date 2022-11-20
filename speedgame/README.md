@@ -42,6 +42,10 @@ Live page [here](https://haidanglevn.github.io/React_SpeedGame/)
 
 ## Screenshot
 
+![Screenshot 2022-11-20 at 17 01 48](https://user-images.githubusercontent.com/24937536/202909516-cea620ed-83ab-4a5c-8649-a2ff7a1ee7d5.png)
+
+![Screenshot 2022-11-20 at 17 03 19](https://user-images.githubusercontent.com/24937536/202909589-21831360-d831-4475-a8e3-ca51dcdf8da6.png)
+
 ## Sources
 
 - [Background photo](https://unsplash.com/photos/NBvcQRdRSeQ)
