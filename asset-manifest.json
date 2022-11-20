@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/React_SpeedGame/static/css/main.7a538cd7.css",
+    "main.js": "/React_SpeedGame/static/js/main.7f175ebc.js",
+    "static/media/christmas background.mp3": "/React_SpeedGame/static/media/christmas background.bf1b53bc9aabe1ed3e68.mp3",
+    "static/media/background2.jpeg": "/React_SpeedGame/static/media/background2.11653c33212a7db7eb4f.jpeg",
+    "static/media/background.jpeg": "/React_SpeedGame/static/media/background.9a8fe99bc83eccd05bb7.jpeg",
+    "static/media/gameend.wav": "/React_SpeedGame/static/media/gameend.dae6a2e10404f37e6246.wav",
+    "static/media/clickright.wav": "/React_SpeedGame/static/media/clickright.54828fdb7dc08df84f5c.wav",
+    "static/media/minuslife.wav": "/React_SpeedGame/static/media/minuslife.b95a636c080a043c65ec.wav",
+    "static/media/click2.wav": "/React_SpeedGame/static/media/click2.685d2cd8c02524ec5dc1.wav",
+    "static/media/gift-box-open.png": "/React_SpeedGame/static/media/gift-box-open.3a5c5390bfb0f0b4a581.png",
+    "index.html": "/React_SpeedGame/index.html",
+    "main.7a538cd7.css.map": "/React_SpeedGame/static/css/main.7a538cd7.css.map",
+    "main.7f175ebc.js.map": "/React_SpeedGame/static/js/main.7f175ebc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7a538cd7.css",
+    "static/js/main.7f175ebc.js"
+  ]
+}
