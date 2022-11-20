@@ -20,11 +20,12 @@ A React school project of a christmas-themed speed game. The project is made in 
 - Game ends when health = 0 or player click the "End" button.  
 
 ### Additional: 
-- Music control button: play and pause state
+- Music control button: play and pause state (background music is muted by default)
 
 ### Chalenges when study: 
 - No react hooks, only manipulating the state is allowed
 - React state and how the page rendered is new compared to vanila JS
+- There is not yet a button to mute all sound assets, might be added later. For now please mute the browser tab if the music annoys you (sorry T.T). 
 
 ## Technologies used
 
@@ -37,20 +38,19 @@ Built with:
 
 ## Setup and usage
 
-Live page [here](https://github.com/margittennosaar/markdown_study_materials)
+Live page [here](https://haidanglevn.github.io/React_SpeedGame/)
 
 ## Screenshot
 
 ## Sources
 
-- [GitHub Guides - masterin markdown](https://guides.github.com/features/mastering-markdown/)
-- [Make a README](https://www.makeareadme.com/)
 - [Background photo](https://unsplash.com/photos/NBvcQRdRSeQ)
 - [Flaticon gift icon](https://www.flaticon.com/free-icon/gift-box_2575365?related_id=2575284&origin=search)
 - [Background music by pixabay](https://pixabay.com/music/christmas-christmas-vacation-christmas-eve-and-new-year-fairy-tale-125673/)
 
 ## Authors and acknowledgment
 Dang Le
+
 - GitHub @haidanglevn
 
 Margit Tennosaar - Teacher at Business College Helsinki
